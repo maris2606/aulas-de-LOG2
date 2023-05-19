@@ -1,12 +1,18 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ContaInvestimento extends Conta{
     private double rendimento;
 
+    static List<ContaInvestimento> contaInvestimentoList = new ArrayList<>();
+
     Scanner scan =  new Scanner(System.in);
 
-    public ContaInvestimento(String dono) throws Exception{
-        super(dono);
+
+
+    public ContaInvestimento(String dono, int indice) throws Exception{
+        super(dono, indice);
         setRendimento(scan.nextDouble());
     }
 
@@ -27,5 +33,9 @@ public class ContaInvestimento extends Conta{
         } else {
             throw new Exception("Rendimento não pode ser tão alto!");
         }
+    }
+
+    public static void addContaInvestimento(ContaInvestimento conta){
+        contaInvestimentoList.add(conta);
     }
 }

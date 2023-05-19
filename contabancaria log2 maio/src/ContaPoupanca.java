@@ -1,13 +1,18 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ContaPoupanca extends Conta{
     private double rendimento;
 
+    static  List<ContaPoupanca> contaPoupancaList = new ArrayList<>();
+
     Scanner scan =  new Scanner(System.in);
 
 
-    public ContaPoupanca(String dono)  throws Exception{
-        super(dono);
+
+    public ContaPoupanca(String dono, int indice)  throws Exception{
+        super(dono, indice);
         System.out.println("coloque o rendimento: ");
         setRendimento(scan.nextDouble());
     }
@@ -23,10 +28,14 @@ public class ContaPoupanca extends Conta{
     }
 
     public void setRendimento(double rendimento) throws Exception{
-        if (rendimento<0.09 && rendimento>0) {
+        if ((rendimento<0.09) && (rendimento>0)) {
             this.rendimento = rendimento;
         } else {
             throw new Exception("Rendimento não pode ser tão alto!");
         }
+    }
+
+    public static void addContaPoupanca(ContaPoupanca conta){
+        contaPoupancaList.add(conta);
     }
 }
